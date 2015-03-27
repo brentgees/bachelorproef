@@ -1,0 +1,22 @@
+body {
+  background: #f2dea5;
+  color: #f00;
+  border: solid 1px #f00;
+  margin-left: 16rem;
+}
+body section {
+  margin-top: 3px;
+  color: #000;
+  border: solid 1px #000;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  zoom: 1;
+}
+body section:after,
+body section:before {
+  content: "";
+  display: table;
+}
+body section:after {
+  clear: both;
+}
