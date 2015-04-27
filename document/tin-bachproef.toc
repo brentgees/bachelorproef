@@ -1,0 +1,19 @@
+\select@language {dutch}
+\contentsline {chapter}{\numberline {1}Inleiding}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}Probleemstelling en Onderzoeksvragen}{4}{section.1.1}
+\contentsline {chapter}{\numberline {2}Methodologie}{8}{chapter.2}
+\contentsline {chapter}{\numberline {3}CSS}{10}{chapter.3}
+\contentsline {chapter}{\numberline {4}CSS-PREPROCESSORS}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}LESS}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}SASS}{11}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}SCSS}{11}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}SASS}{11}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Stylus}{11}{section.4.3}
+\contentsline {section}{\numberline {4.4}Clay}{11}{section.4.4}
+\contentsline {section}{\numberline {4.5}Css Preprocessor}{11}{section.4.5}
+\contentsline {section}{\numberline {4.6}Css-crush}{11}{section.4.6}
+\contentsline {section}{\numberline {4.7}DtCSS}{11}{section.4.7}
+\contentsline {section}{\numberline {4.8}Myth}{11}{section.4.8}
+\contentsline {section}{\numberline {4.9}Rework}{11}{section.4.9}
+\contentsline {section}{\numberline {4.10}Switch CSS}{11}{section.4.10}
+\contentsline {chapter}{\numberline {5}Conclusie}{12}{chapter.5}
