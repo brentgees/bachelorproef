@@ -1,0 +1,291 @@
+@charset "UTF-8";
+/* line 4, ../sass/example.scss */
+body {
+  background-color: #eeeeee;
+  width: 100%;
+  margin: 0px;
+}
+
+/* line 11, ../sass/example.scss */
+section {
+  width: 100%;
+}
+
+/* line 14, ../sass/example.scss */
+.container {
+  width: 100%;
+  max-width: 50em;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* line 21, ../sass/example.scss */
+h3 {
+  text-align: center;
+}
+
+/* line 24, ../sass/example.scss */
+article {
+  padding-top: 15px;
+  padding-bottom: 45px;
+}
+
+/* line 28, ../sass/example.scss */
+.section-heading {
+  padding: 40px 0;
+  text-align: center;
+  background: #ee750d;
+}
+
+/* line 34, ../sass/example.scss */
+.adres {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.adres:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 38, ../sass/example.scss */
+.tel {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.tel:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #ff0000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 41, ../sass/example.scss */
+.mobile {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.mobile:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 44, ../sass/example.scss */
+.fax {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.fax:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 47, ../sass/example.scss */
+.map-marker {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.map-marker:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 50, ../sass/example.scss */
+.envelope {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.envelope:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 54, ../sass/example.scss */
+.building-o {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.building-o:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 58, ../sass/example.scss */
+.check {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.check:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 62, ../sass/example.scss */
+.star {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.star:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 66, ../sass/example.scss */
+.extra {
+  position: relative;
+}
+/* line 55, ../sass/_functions.scss */
+.extra:before {
+  font-family: FontAwesome;
+  position: absolute;
+  left: -17px;
+  color: #000000;
+  content: "";
+  margin-top: 1px;
+}
+
+/* line 69, ../sass/example.scss */
+#gradient {
+  clear: both;
+}
+
+/* line 73, ../sass/example.scss */
+.gradient {
+  width: 50%;
+  float: left;
+  height: 150px;
+  background: #000000;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #000000 0%, #ffffff 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #000000 0%, #ffffff 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #000000 0%, #ffffff 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top-color', endColorstr='$bottom-color',GradientType=0 );
+  /* IE6-9 */
+  margin-bottom: 15px;
+}
+
+/* line 81, ../sass/example.scss */
+.gradient2 {
+  float: right;
+  width: 50%;
+  height: 150px;
+  background: red;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, red 0%, yellow 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, red), color-stop(100%, yellow));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, red 0%, yellow 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, red 0%, yellow 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, red 0%, yellow 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, red 0%, yellow 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top-color', endColorstr='$bottom-color',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 88, ../sass/example.scss */
+.shadow-bottom {
+  width: 50%;
+  height: 150px;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px;
+  clear: both;
+}
+
+/* line 96, ../sass/example.scss */
+.button {
+  display: inline-block;
+  background-color: #ff0000;
+  border: 1px solid #bf0000;
+  border-radius: 5px;
+  padding: .5em 1em;
+  -webkit-box-shadow: 0px 4px 4px 0px #b20000;
+  -moz-box-shadow: 0px 4px 4px 0px #b20000;
+  box-shadow: 0px 4px 4px 0px #b20000;
+}
+/* line 104, ../sass/_functions.scss */
+.button:hover {
+  cursor: pointer;
+  background-color: #d80000;
+  border-color: #990000;
+}
+
+/* line 100, ../sass/example.scss */
+.button2 {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  padding: .5em 1em;
+  -webkit-box-shadow: 0px 4px 4px 0px #b2b2b2;
+  -moz-box-shadow: 0px 4px 4px 0px #b2b2b2;
+  box-shadow: 0px 4px 4px 0px #b2b2b2;
+  transition: all 0.1s;
+}
+/* line 104, ../sass/_functions.scss */
+.button2:hover {
+  cursor: pointer;
+  background-color: #d8d8d8;
+  border-color: #999999;
+}
+/* line 111, ../sass/_functions.scss */
+.button2:active {
+  margin-top: 4px;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.7);
+}
+
+/* line 104, ../sass/example.scss */
+#footer {
+  margin-top: 50px;
+  min-height: 250px;
+}

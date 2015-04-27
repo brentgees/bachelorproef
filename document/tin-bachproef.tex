@@ -226,12 +226,14 @@ Soms wil je de auteur niet expliciet vernoemen, dan gebruik je \texttt{$\backsla
 
 \chapter{CSS}
 \label{ch:CSS}
-
+CSS of cascadiing style sheets bestaan al een tijdje.
+CSS1 werd in 1996 geïntroduceerd door het W3C. 4 Jaar later, in 1998 werd de CSS2 standaard dan ingevoerd.
+De huidige versie, CSS3, is voorlopig nog niet geïntroduceerd als standaard, maar wordt wel al vlot gebruikt.
 %% TODO: de structuur en titel van deze hoofdstukken hangen af van je
 % eigen onderzoek. Elke fase in je onderzoek kan een eigen hoofdstuk krijgen. Kies telkens een gepaste titel. ``Corpus'' is *GEEN* gepaste titel
 
 
-\chapter{CSS-PREPROCESSORS}
+\chapter{CSS-PREPROCESSORS}\texttt{•}
 \label{ch:css-preprocessors}
 
 \section{LESS}
@@ -243,8 +245,43 @@ Soms wil je de auteur niet expliciet vernoemen, dan gebruik je \texttt{$\backsla
 
 
 \section{SASS}
-
+Syntactically Awesome Stylesheets, of SASS, is samen met LESS een van de meest gebruikte CSS preprocessors. Wanneer men voor SASS  kiest, heeft men 2 mogelijkheiden: Sassy CSS (SCSS) of ...(SASS).\newline
+Over het algemeen wordt .scss als de standaard beschouwd aangezien dit de recentste versie is. De eerste officiele release van Sass dateert van 15 December 2006. Op dat moment was er alleen nog maar van de sass versie. de scss versie is pas later, bij Sass 3 als standaard geïntroduceerd, dit was op 10 mei 2010. 
 \subsection{SCSS}
+\subsubsection{Variabelen}
+SASS maakt gebruik van variabelen. Door gebruik te maken van variabelen kan je makkelijk iets dat je meerdere keer moet gebruiken in je SASS bestand declareren en dit op meerdere plaatsen hergebruiken. Hierdoor kan je achteraf makkelijk een kleur of font-size veranderen op slechts 1 plaats in plaats van door je hele document.\newline
+Variabelen gebruik je als volgt:
+\begin{lstlisting}
+$variabele: waarde;
+\end{lstlisting}
+\subsubsection{Nesten}
+Bij de meeste programmeertalen is er een vorm van nesting aanwezig. Bij het gewone CSS niet, gelukkig is dit bij SCSS ingebouwd.
+De selectors die binnen een andere selector staan, worden dan gewoon na elkaar gezet.
+\begin{lstlisting}
+nav{
+	ul{
+		list-style: none;
+		li{
+			display: inline-block
+			a{
+				text-decoration: none;			
+			}
+		}
+	}
+}
+\end{lstlisting}
+Wordt vertaald naar volgende CSS code
+\begin{lstlisting}
+nav ul{list-style: none;}
+nav ul li{display: inline-block;}
+nav ul li a{text-decoration: none;}
+\end{lstlisting}
+\subsubsection{Partials}
+\subsubsection{Import}
+\subsubsection{Mixins}
+\subsubsection{Inheritance}
+\subsubsection{Operators}
+
 
 \subsection{SASS}
 

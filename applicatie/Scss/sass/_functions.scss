@@ -1,0 +1,210 @@
+//TO DO
+//duidelijkere beschrijving maken hoe alles gebruikt kan worden
+//bij de buttons, als je clickable op yes zet, bij 2 buttons naast elkaar werkt dit niet ged.
+//border-radius en opacity controleren
+//idee van breakpoints uit ruby halen?
+
+//mixin variables
+//standaard kleur van de icoontjes
+$icon-color: #000000;
+$shadow-bottom-color: rgba(0, 0, 0, 0.7);
+$shadow-bottom-height: 5px;
+$button-default-color: #ffffff;
+$button-shadow-bottom-height: 4px;
+
+// Breakpoints
+$onepx: em-calc(1) !default;
+$hdpi-ratio-default: 1.3 !default;
+$breakpoint-large-default: em-calc(1440) !default;
+$breakpoint-medium-default: em-calc(959) !default;
+$breakpoint-small-default: em-calc(767) !default;
+
+
+//icon variables voor de verschillende meest gebruikte icons
+$home: "\f015";
+$map-marker: "\f041";
+$envelope-o: "\f003";
+$building-o: "\f0F7";
+$fax: "\f1ac";
+$mobile: "\f10b";
+$check: "\f00c";
+$star: "\f005";
+$phone: "\f095";
+
+@mixin icon($content, $color: $icon-color) {
+    @if $content == "home" {
+        $content: $home;
+    }
+    @else if $content == "map-marker" {
+        $content: $map-marker;
+    }
+    @else if $content == "envelope-o" or $content == "envelope" {
+        $content: $envelope-o;
+    }
+    @else if $content == "building-o" or $content == "building" {
+        $content: $building-o;
+    }
+    @else if $content == "fax" {
+        $content: $fax;
+    }
+    @else if $content == "mobile" {
+        $content: $mobile;
+    }
+    @else if $content == "check" {
+        $content: $check;
+    }
+    @else if $content == "star" {
+        $content: $star;
+    }
+    @else if $content == "phone" {
+        $content: $phone;
+    }
+    position: relative;
+    &:before {
+        font-family: FontAwesome;
+        position: absolute;
+        left: -17px;
+        color: $color;
+        content: $content;
+        margin-top: 1px;
+    }
+}
+
+@mixin gradient($top-color: #000000, $bottom-color: #ffffff) {
+    background: $top-color;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top-color), color-stop(100%, $bottom-color));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, $top-color 0%, $bottom-color 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top-color', endColorstr='$bottom-color',GradientType=0 );
+    /* IE6-9 */
+}
+
+//zet shadow bottom met een kleine transiton
+@mixin shadow-bottom($height: $shadow-bottom-height, $rgba-color: $shadow-bottom-color) {
+    -webkit-box-shadow: 0px $height $height 0px $rgba-color;
+    -moz-box-shadow: 0px $height $height 0px $rgba-color;
+    box-shadow: 0px $height $height 0px $rgba-color;
+}
+
+//mixin voor een button aan te maken, eerste parameter is het kleur dat meegegeven wordt.
+//2de parameter zorgt er voor dat er een klikeffect komt indien het op ja staat.
+//Fallback geschreven voor als 1ste parameter yes of no is en geen kleur meegegeven.
+@mixin button($color: $button-default-color, $clickable: no) {
+    @if $color == yes or $color == no {
+        $clickable: $color;
+        $color: $button-default-color;
+    }
+    display: inline-block;
+    background-color: $color;
+    border: 1px solid mix(black, $color, 25%);
+    border-radius: 5px;
+    padding: .5em 1em;
+    &:hover {
+        cursor: pointer;
+        background-color: mix(black, $color, 15%);
+        border-color: mix(black, $color, 40%);
+    }
+    @include shadow-bottom($button-shadow-bottom-height, mix(black, $color, 30%));
+    @if $clickable == yes {
+        &:active {
+            margin-top: $button-shadow-bottom-height;
+            @include shadow-bottom(0px);
+        }
+        
+        transition: all 0.1s;
+    }
+}
+
+
+
+
+//useful mixins from juice
+//
+// Calculate rems from a px value
+// ------------------------------
+@function rem-calc($px, $base-val: $base-px-default) {
+    @if not unitless($px) {
+        $px: strip-units($px);
+    }
+    @if not unitless($base-val) {
+        $base-val: strip-units($base-val);
+    }
+    @return ($px / $base-val) * 1rem;
+}
+
+
+// Breakpoints
+// Inspiration: http://www.sitepoint.com/managing-responsive-breakpoints-sass/
+// ---------------------------------------------------------------------------
+$breakpoints: (
+    "large-only":   "(min-width: #{$breakpoint-medium-default + $onepx})",
+    "large-up": "(min-width: #{$breakpoint-medium-default + $onepx})",
+    "large":    "(max-width: #{$breakpoint-large-default})",
+    "medium-only":  "(min-width: #{$breakpoint-small-default + $onepx}) and (max-width: #{$breakpoint-medium-default})",
+    "medium-up":    "(min-width: #{$breakpoint-small-default + $onepx})",
+    "medium":   "(max-width: #{$breakpoint-medium-default})",
+    "small-only":   "(min-width: #{$breakpoint-xsmall-default + $onepx}) and (max-width: #{$breakpoint-small-default})",
+    "small-up": "(min-width: #{$breakpoint-xsmall-default + $onepx})",
+    "small":    "(max-width: #{$breakpoint-small-default})",
+    "xsmall-only":  "(min-width: #{$breakpoint-xxsmall-default + $onepx}) and (max-width: #{$breakpoint-xsmall-default})",
+    "xsmall-up":    "(min-width: #{$breakpoint-xxsmall-default + $onepx})",
+    "xsmall":   "(max-width: #{$breakpoint-xsmall-default})",
+    "xxsmall":  "(max-width: #{$breakpoint-xxsmall-default})",
+    "iphone3":  "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1)",
+    "iphone3-landscape":    "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)",
+    "iphone3-portrait": "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)",
+    "iphone4":  "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)",
+    "iphone4-landscape":    "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation: landscape)",
+    "iphone4-portrait": "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation: portrait)",
+    "iphone5":  "(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71)",
+    "iphone5-landscape":    "(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: landscape)",
+    "iphone5-portrait": "(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: portrait)",
+    "iphone6":  "(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2)",
+    "iphone6-landscape":    "(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
+    "iphone6-portrait": "(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
+    "iphone6-plus": "(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3)",
+    "iphone6-plus-landscape":   "(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)",
+    "iphone6-plus-portrait":    "(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
+    "ipad": "(min-device-width: 768px) and (max-device-width: 1024px)",
+    "ipad-landscape":   "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)",
+    "ipad-portrait":    "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)",
+    "ipad-retina":  "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)",
+    "ipad-retina-landscape":    "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
+    "ipad-retina-portrait": "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
+    "hdpi": "(-webkit-min-device-pixel-ratio: $hdpi-ratio-default), only screen and (min--moz-device-pixel-ratio: $hdpi-ratio-default), only screen and (-moz-min-device-pixel-ratio: $hdpi-ratio-default), only screen and (-o-min-device-pixel-ratio: #{$hdpi-ratio-default}/1), only screen and (min-resolution: #{round($hdpi-ratio-default*96)}dpi), only screen and (min-resolution: #{$hdpi-ratio-default}dppx)"
+);
+@mixin bp($break, $viewport1: null) {
+    // preset breakpoint
+    @if not $viewport1 {
+        @if map-has-key($breakpoints, $break) {
+            @media only screen and #{map-get($breakpoints, $break)} { @content; }
+        }
+        @else {
+            @warn "Couldn't find a breakpoint named #{$break}.";
+        }
+    }
+    @else {
+        // min breakpoint
+        @if $break == min {
+            @media screen and (min-width: $viewport1) { @content; }
+        }
+        // max breakpoint
+        @else if $break == max {
+            @media screen and (max-width: $viewport1) { @content; }
+        }
+        // min & max breakpoint
+        @else {
+            @media screen and (min-width: $break) and (max-width: $viewport1) { @content; }
+        }
+    }
+}
