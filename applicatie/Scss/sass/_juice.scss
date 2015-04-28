@@ -40,7 +40,7 @@ $ease-in-out-back:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 // Base px
 $base-px-default: 16px !default;
-$browser-prefixes: false !default;
+$browser-prefixes: true !default;
 
 // Prefix mixin if needed
 // Credit: http://bourbon.io/docs/#prefixer

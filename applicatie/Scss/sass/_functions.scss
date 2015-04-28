@@ -15,9 +15,12 @@ $button-shadow-bottom-height: 4px;
 // Breakpoints
 $onepx: em-calc(1) !default;
 $hdpi-ratio-default: 1.3 !default;
+$breakpoint-xlarge-default: em-calc(1920) !default;
 $breakpoint-large-default: em-calc(1440) !default;
 $breakpoint-medium-default: em-calc(959) !default;
 $breakpoint-small-default: em-calc(767) !default;
+$breakpoint-xsmall-default: em-calc(480) !default;
+$breakpoint-xxsmall-default: em-calc(320) !default;
 
 
 //icon variables voor de verschillende meest gebruikte icons
@@ -147,41 +150,45 @@ $phone: "\f095";
 // Inspiration: http://www.sitepoint.com/managing-responsive-breakpoints-sass/
 // ---------------------------------------------------------------------------
 $breakpoints: (
-    "large-only":   "(min-width: #{$breakpoint-medium-default + $onepx})",
-    "large-up": "(min-width: #{$breakpoint-medium-default + $onepx})",
-    "large":    "(max-width: #{$breakpoint-large-default})",
-    "medium-only":  "(min-width: #{$breakpoint-small-default + $onepx}) and (max-width: #{$breakpoint-medium-default})",
-    "medium-up":    "(min-width: #{$breakpoint-small-default + $onepx})",
-    "medium":   "(max-width: #{$breakpoint-medium-default})",
-    "small-only":   "(min-width: #{$breakpoint-xsmall-default + $onepx}) and (max-width: #{$breakpoint-small-default})",
-    "small-up": "(min-width: #{$breakpoint-xsmall-default + $onepx})",
-    "small":    "(max-width: #{$breakpoint-small-default})",
-    "xsmall-only":  "(min-width: #{$breakpoint-xxsmall-default + $onepx}) and (max-width: #{$breakpoint-xsmall-default})",
-    "xsmall-up":    "(min-width: #{$breakpoint-xxsmall-default + $onepx})",
-    "xsmall":   "(max-width: #{$breakpoint-xsmall-default})",
-    "xxsmall":  "(max-width: #{$breakpoint-xxsmall-default})",
-    "iphone3":  "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1)",
-    "iphone3-landscape":    "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)",
-    "iphone3-portrait": "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)",
-    "iphone4":  "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)",
-    "iphone4-landscape":    "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation: landscape)",
-    "iphone4-portrait": "(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation: portrait)",
-    "iphone5":  "(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71)",
-    "iphone5-landscape":    "(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: landscape)",
-    "iphone5-portrait": "(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: portrait)",
-    "iphone6":  "(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2)",
-    "iphone6-landscape":    "(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-    "iphone6-portrait": "(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-    "iphone6-plus": "(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3)",
-    "iphone6-plus-landscape":   "(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)",
-    "iphone6-plus-portrait":    "(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
-    "ipad": "(min-device-width: 768px) and (max-device-width: 1024px)",
-    "ipad-landscape":   "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)",
-    "ipad-portrait":    "(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)",
-    "ipad-retina":  "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)",
-    "ipad-retina-landscape":    "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-    "ipad-retina-portrait": "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-    "hdpi": "(-webkit-min-device-pixel-ratio: $hdpi-ratio-default), only screen and (min--moz-device-pixel-ratio: $hdpi-ratio-default), only screen and (-moz-min-device-pixel-ratio: $hdpi-ratio-default), only screen and (-o-min-device-pixel-ratio: #{$hdpi-ratio-default}/1), only screen and (min-resolution: #{round($hdpi-ratio-default*96)}dpi), only screen and (min-resolution: #{$hdpi-ratio-default}dppx)"
+	"xxlarge":	"(min-width: #{$breakpoint-xlarge-default + $onepx})",
+	"xlarge-only":	"(min-width: #{$breakpoint-large-default + $onepx}) and (max-width: #{$breakpoint-xlarge-default})",
+	"xlarge-up":	"(min-width: #{$breakpoint-large-default + $onepx})",
+	"xlarge":	"(max-width: #{$breakpoint-xlarge-default})",
+	"large-only":	"(min-width: #{$breakpoint-medium-default + $onepx}) and (max-width: #{$breakpoint-large-default})",
+	"large-up":	"(min-width: #{$breakpoint-medium-default + $onepx})",
+	"large":	"(max-width: #{$breakpoint-large-default})",
+	"medium-only":	"(min-width: #{$breakpoint-small-default + $onepx}) and (max-width: #{$breakpoint-medium-default})",
+	"medium-up":	"(min-width: #{$breakpoint-small-default + $onepx})",
+	"medium":	"(max-width: #{$breakpoint-medium-default})",
+	"small-only":	"(min-width: #{$breakpoint-xsmall-default + $onepx}) and (max-width: #{$breakpoint-small-default})",
+	"small-up":	"(min-width: #{$breakpoint-xsmall-default + $onepx})",
+	"small":	"(max-width: #{$breakpoint-small-default})",
+	"xsmall-only":	"(min-width: #{$breakpoint-xxsmall-default + $onepx}) and (max-width: #{$breakpoint-xsmall-default})",
+	"xsmall-up":	"(min-width: #{$breakpoint-xxsmall-default + $onepx})",
+	"xsmall":	"(max-width: #{$breakpoint-xsmall-default})",
+	"xxsmall":	"(max-width: #{$breakpoint-xxsmall-default})",
+	"iphone3":	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1)",
+	"iphone3-landscape":	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)",
+	"iphone3-portrait":	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)",
+	"iphone4":	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)",
+	"iphone4-landscape":	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation: landscape)",
+	"iphone4-portrait":	"(min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation: portrait)",
+	"iphone5":	"(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71)",
+	"iphone5-landscape":	"(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: landscape)",
+	"iphone5-portrait":	"(min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: portrait)",
+	"iphone6":	"(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2)",
+	"iphone6-landscape":	"(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
+	"iphone6-portrait":	"(min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
+	"iphone6-plus":	"(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3)",
+	"iphone6-plus-landscape":	"(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)",
+	"iphone6-plus-portrait":	"(min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
+	"ipad":	"(min-device-width: 768px) and (max-device-width: 1024px)",
+	"ipad-landscape":	"(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)",
+	"ipad-portrait":	"(min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)",
+	"ipad-retina":	"(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)",
+	"ipad-retina-landscape":	"(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
+	"ipad-retina-portrait":	"(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
+	"hdpi":	"(-webkit-min-device-pixel-ratio: $hdpi-ratio-default), only screen and (min--moz-device-pixel-ratio: $hdpi-ratio-default), only screen and (-moz-min-device-pixel-ratio: $hdpi-ratio-default),	only screen and (-o-min-device-pixel-ratio: #{$hdpi-ratio-default}/1), only screen and (min-resolution: #{round($hdpi-ratio-default*96)}dpi), only screen and (min-resolution: #{$hdpi-ratio-default}dppx)"
 );
 @mixin bp($break, $viewport1: null) {
     // preset breakpoint
