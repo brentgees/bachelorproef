@@ -109,7 +109,7 @@
 %  - 1e semester = 1e examenperiode
 %  - 2e semester = 2e examenperiode
 %  - tweede zit = 3e examenperiode
-\newcommand{\examenperiode}{Tweede examenperiode}
+\newcommand{\examenperiode}{Derde examenperiode}
 
 %%========================================================================
 %% Inhoud document
@@ -245,10 +245,11 @@ De huidige versie, CSS3, is voorlopig nog niet geïntroduceerd als standaard, ma
 
 
 \section{SASS}
-Syntactically Awesome Stylesheets, of SASS, is samen met LESS een van de meest gebruikte CSS preprocessors. Wanneer men voor SASS  kiest, heeft men 2 mogelijkheiden: Sassy CSS (SCSS) of ...(SASS).\newline
+Syntactically Awesome Stylesheets, of SASS, is samen met LESS een van de meest gebruikte CSS preprocessors. Wanneer men voor SASS  kiest, heeft men 2 mogelijkheiden: Sassy CSS (SCSS) of Syntactically Awesome Stylesheets (SASS).\newline
 Over het algemeen wordt .scss als de standaard beschouwd aangezien dit de recentste versie is. De eerste officiele release van Sass dateert van 15 December 2006. Op dat moment was er alleen nog maar van de sass versie. de scss versie is pas later, bij Sass 3 als standaard geïntroduceerd, dit was op 10 mei 2010. 
 \subsection{SCSS}
-\subsubsection{Variabelen}
+\subsubsection{Eigenschappen}
+\paragraph{Variabelen}
 SASS maakt gebruik van variabelen. Door gebruik te maken van variabelen kan je makkelijk iets dat je meerdere keer moet gebruiken in je SASS bestand declareren en dit op meerdere plaatsen hergebruiken. Hierdoor kan je achteraf makkelijk een kleur of font-size veranderen op slechts 1 plaats in plaats van door je hele document.\newline
 Variabelen gebruik je als volgt:
 \begin{lstlisting}
@@ -276,12 +277,88 @@ nav ul{list-style: none;}
 nav ul li{display: inline-block;}
 nav ul li a{text-decoration: none;}
 \end{lstlisting}
-\subsubsection{Partials}
-\subsubsection{Import}
+\subsubsection{Partials en Import}
+Wanneer je een grotere website moet maken, kan je css bestand nogal vlug onoverzichtelijk worden. Daarom wordt er bij sass gebruik gemaakt van partials. Dit zijn bestanden die beginnen met een underscore en eindigen op .scss.\newline
+Omdat deze beginnen met een underscore, worden deze bestanden niet vertaald naar een css bestand. Je kan ze wel importeren in andere sass bestanden met behulp van volgende code. Merk op dat we dit bestand kunnen toevoegen zowel met als zonder extensie.
+\begin{lstlisting}
+@import _partial.scss
+of
+@import _partial
+\end{lstlisting}
+Dit kan bijvoorbeeld gebruikt worden om een apart bestand, \_variables.scss, te maken, waarin je dan alle variabelen steekt zonder dat er een variables.css bestand gemaakt wordt door de preprocessor.\newline
+Een tweede gebruik hierbij kan bijvoorbeeld zijn het importeren van een standaard reset bestand dat je voor ieder project gebruikt.
 \subsubsection{Mixins}
-\subsubsection{Inheritance}
+Omdat het in css soms veel werk is om bepaalde stukken telkens te herhalen of uit te schrijven voor alle vendor prefixes, bestaan er in sass mixins. voor deze mixins te gebruiken, kan je deze oproepen met de @include code. Daar kan je dan eventueel een of meerdere variabelen aan toevoegen afhankelijk van wat er verwacht wordt van deze functie. Om een mixin te schrijven binnen sass, gebruik je de @mixin code.\newline
+Voorbeelden om mixins te gebruiken kan het automatisch toevoegen zijn van alle nodige vendor prefixes zonder deze iedere keer te herhalen. Een iets geavanceerder voorbeeld kan het toepassen van een knop-effect op een item.\newline
+In dit eerste voorbeeld wordt getoond hoe mixins kunnen gebruikt worden voor het toevoegen van vendor prefixes. Hier wordt de mixin aangemaakt en wordt getoond hoe je een waarde kunt meegeven.
+\begin{lstlisting}
+@mixin border-radius($variabele) {
+  -webkit-border-radius: $variabele;
+     -moz-border-radius: $variabele;
+      -ms-border-radius: $variabele;
+          border-radius: $variabele;
+}
+\end{lstlisting}
+Om deze dan te gebruiken binnen je sass code, kan je deze eenvoudig aanroepen op de volgende manier:
+\begin{lstlisting}
+div { @include border-radius( waarde ) ; }
+\end{lstlisting}
+Wanneer je deze laatste lijn code toevoegd aan je scss document, zorgt dit ervoor dat wanneer dit bestand omgevormd wordt naar een css bestand, er automatisch alle vendor prefixes aan toegevoegd worden. Op die manier vergeet je nooit nog een bepaalde prefixer, en bespaard het je heel veel tijd.\newline
+Bij het aanmaken van deze mixins, is het ook mogelijk om een standaard waarde in te geven voor iedere variabele. Je kan bijvoorbeeld instellen dat wanneer er bij het importeren van een border-radius geen waarde meegegeven wordt, de standaard border-radius 5 pixels is. Dit kan als volgt.
+\begin{lstlisting}
+@mixin border-radius($variabele: 5px){
+  -webkit-border-radius: $variabele;
+     -moz-border-radius: $variabele;
+      -ms-border-radius: $variabele;
+          border-radius: $variabele;
+}
+\end{lstlisting}
+Deze mixing kan dus nog altijd gebruikt worden door een waarde mee te geven, maar wanneer er geen waarde meegegeven wordt, zal de border-radius op 5 pixels staan. Hier een voorbeeld hoe het gebruikt kan worden zonder variabele.
+\begin{lstlisting}
+div { @include border-radius; }
+\end{lstlisting}
+Dit eenvoudige lijntje geeft dus een border-radius van 5 pixels voor alle vooraf ingestelde vendor prefixes. De uiteindelijke mogelijkheden met mixins zijn eindeloos, je kan gaan van het eenvoudigweg toevoegen van prefixes, tot het toepassen van een knopeffect bij een div. Er bestaat zelfs de mogelijkheid om aan de hand van mixins mobiele css toe te voegen per lijn. Dit is echter iets moeilijker om zelf uit te schrijven waardoor je best dienst doet op een mixing library zoals Juice\footnote{http://kylebrumm.com/juice/} of Bourbon\footnote{http://bourbon.io/}. Buiten deze twee bestaan er nog vele andere, maar deze 2 zijn veruit de meest gekende.
+\subsubsection{Inheritance/Extend}
+Door gebruik te maken van de extend code, zorg je ervoor dat je eigenschappen die je al eens voor een eerder gedefinieerde klasse geschreven hebt, niet meer moet herschrijven. Dit wordt het DRY-principe genoemd (Don't Repeat Yourself).\newline
+Om deze functie van sass te kunnen gebruiken, moet je eigenlijk alleen @extend typen gevolgd door de klasse waarvan je alle eigenschappen wilt overnemen.
+\begin{lstlisting}
+.klasse1 {
+	color: red;
+	font-size: 24px;
+	border-bottom: 1px solid red;
+}
+.klasse2 {
+	@extend .klasse1;
+	font-weight: 700;
+}
+\end{lstlisting}
+Bovenstaande code zorgt er dus voor dat zowel klasse1 als klasse2 rode tekst hebben die 24 pixels groot is en een rode onderrand hebben. De tekst van klasse2 heeft daar bovenop nog eens een font-weight van 700px.
 \subsubsection{Operators}
+Wanneer je gebruik maakt van variabelen, kan het soms wel eens handig zijn als je daar ook kan met rekenen. Daarom voegt sass de volgende wiskundige operatoren toe: +, -, %, *, %.\newline
+Deze kunnen dan makkelijk gebruikt worden in combinatie met de bestaande variabelen.
+\begin{lstlisting}
+$schermbreedte = 1040px;
 
+.klasse1{
+	width: $schermbreedte / 2 - 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+\end{lstlisting}
+Zoals in bovenstaand voorbeeld te zien is, kan dit vooral handig zijn wanneer je een bepaalde block de helft of een derde van de schermbreedte wilt hebben. Het is ook mogelijk om via deze manier een waarde om te zetten naar percentages, dit door het eindresultaat * 100% te vermenigvuldigen.
+\subsubsection{Functions}
+Wanneer je gebruik maakt van Sassscript, is er ook de mogelijkheid om waardes te berekenen aan het hand van functies.
+\begin{lstlisting}
+@function bereken-percentage($breedte-item, $breedte-container){
+	@return ($breedte-item / $breedte-container) * 100%;
+}
+\end{lstlisting}
+Wordt dan als volgt gebruikt:
+\begin{lstlisting}
+.box1{
+	width: bereken-percentage(500px,1040p);
+}
+\end{lstlisting}
 
 \subsection{SASS}
 
@@ -365,6 +442,10 @@ nav ul li a{text-decoration: none;}
 
 \bibliographystyle{apa}
 \bibliography{tin-bachproef}
+
+
+
+
 
 %%---------- Back matter -------------------------------------------------
 
